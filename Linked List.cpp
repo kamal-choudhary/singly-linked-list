@@ -51,12 +51,21 @@ class list
 		}
 		void insert_position(int pos, int value)
 		{
+			if(pos == 1) 
+			{
+				insert_start(value);
+				return; 
+			}
+			
 			node *pre=new node;
 			node *cur=new node;
 			node *temp=new node;
 			cur=head;
 			for(int i=1;i<pos;i++)
 			{
+				if(cur == NULL)
+					return;
+					
 				pre=cur;
 				cur=cur->next;
 			}
@@ -87,15 +96,25 @@ class list
 		}
 		void delete_position(int pos)
 		{
+			if(pos == 1) 
+			{
+				delete_first();
+				return; 
+			}
+			
 			node *current=new node;
 			node *previous=new node;
 			current=head;
 			for(int i=1;i<pos;i++)
 			{
+				if(current == NULL)
+					return;
+				
 				previous=current;
 				current=current->next;
 			}
 			previous->next=current->next;
+			delete current;
 		}
 };
 int main()
