@@ -97,6 +97,28 @@ class list
 			}
 			previous->next=current->next;
 		}
+	
+	void search(int key)
+	{
+		int pos=1;
+		bool found=false;
+		node *temp = new node;
+		temp=head;
+		while(temp!=NULL)
+			{
+				if(temp->data==key)
+				{
+					cout<<"\nFound at position:"<<" "<<pos;
+					found=true;
+					break;
+				}
+
+				temp=temp->next;
+				pos++;
+
+			}
+			if(found!=true){cout<<"\nElement doesn't exist in LinkedList";}
+	}
 };
 int main()
 {
@@ -140,6 +162,9 @@ int main()
 	obj.delete_position(4);
 	obj.display();
 	cout<<"\n--------------------------------------------------\n";
+	cout<<"--------------Searching for an element--------------";
+	cout<<"\n--------------------------------------------------\n";
+	obj.search(50);
 	system("pause");
 	return 0;
 }
